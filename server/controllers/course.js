@@ -6,26 +6,6 @@ const ErrorHandler=require("../utils/ErrorHandler")
 //create Course
 
 const addCourse = async (req, res, next) => {
-    try {
-        const { courseName, description, duration, price, courseCurriculum } = req.body;
-        if (!courseName || !description || !duration || !price || !courseCurriculum) {
-            return next(new ErrorHandler("Please provide all required fields", 400))
-        }
-
-
-        const createCourse = await Course.create({
-            courseName,
-            description,
-            duration,
-             price,
-            courseCurriculum
-
-        })
-        console.log(createCourse)
-        return res.status(200).json(createCourse)
-    } catch (error) {
-        return next(new ErrorHandler(error.message, 500))
-    }
 
 }
 
