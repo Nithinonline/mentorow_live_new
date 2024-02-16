@@ -12,8 +12,12 @@ const addCourse = async (req, res, next) => {
 //get All
 
 const getAllCourse = async (req, res, next) => {
-    const courses = await Course.find({})
-    res.status(200).json({ courses })
+    try{
+        const courses = await Course.find({})
+        res.status(200).json({ courses })
+        }catch(err){
+            return next(new ErrorHandler("No Courses find",500))
+        }
 }
 
 
